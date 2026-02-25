@@ -388,7 +388,8 @@ def get_all_detection_infor_tennis(game_list, configs):
 
     for game_name in game_list:
         game_dir = os.path.join(dir, game_name)
-        clips_list = [name for name in os.listdir(game_dir)]
+        clips_list = [name for name in os.listdir(game_dir)
+                      if os.path.isdir(os.path.join(game_dir, name)) and name.startswith('Clip')]
         for clip_name in clips_list:
             clip_dir = os.path.join(game_dir, clip_name)
             ball_annos_path = os.path.join(clip_dir, 'Label.csv')
@@ -459,7 +460,8 @@ def get_all_detection_infor_tennis_sequence(game_list, configs):
 
     for game_name in game_list:
         game_dir = os.path.join(dir, game_name)
-        clips_list = [name for name in os.listdir(game_dir)]
+        clips_list = [name for name in os.listdir(game_dir)
+                      if os.path.isdir(os.path.join(game_dir, name)) and name.startswith('Clip')]
         for clip_name in clips_list:
             clip_dir = os.path.join(game_dir, clip_name)
             ball_annos_path = os.path.join(clip_dir, 'Label.csv')
